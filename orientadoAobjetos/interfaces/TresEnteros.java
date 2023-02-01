@@ -1,15 +1,17 @@
 package interfaces;
 
-public class TresEnteros implements Estadistica <Integer>{
-	
-	//Atributos
-	
+import java.util.Arrays;
+
+public class TresEnteros implements Estadistica<Integer> {
+
+	// Atributos
+
 	Integer num1;
 	Integer num2;
 	Integer num3;
-	
-	//Contructores
-	
+
+	// Contructores
+
 	public TresEnteros(Integer num1, Integer num2, Integer num3) {
 		super();
 		this.num1 = num1;
@@ -20,8 +22,8 @@ public class TresEnteros implements Estadistica <Integer>{
 	public TresEnteros() {
 		super();
 	}
-	
-	//Gettes y setters
+
+	// Gettes y setters
 
 	public Integer getNum1() {
 		return num1;
@@ -46,39 +48,73 @@ public class TresEnteros implements Estadistica <Integer>{
 	public void setNum3(Integer num3) {
 		this.num3 = num3;
 	}
-	
-	//Metodos
+
+	// Metodos
 
 	@Override
 	public Integer mayor() {
-		// TODO Auto-generated method stub
-		return null;
+		Integer res = 0;
+		if (num1 > num2 && num1 > num3) {
+			res = num1;
+		} else if (num2 > num3) {
+			res = num2;
+		} else {
+			res = num3;
+		}
+		return res;
 	}
 
 	@Override
 	public Integer menor() {
-		// TODO Auto-generated method stub
-		return null;
+		Integer res = 0;
+		if (num1 < num2 && num1 < num3) {
+			res = num1;
+		} else if (num2 < num3) {
+			res = num2;
+		} else {
+			res = num3;
+		}
+		return res;
 	}
 
 	@Override
 	public double media() {
-		// TODO Auto-generated method stub
-		return 0;
+		Integer numeros = 3;
+		return (num1 + num2 + num3) / numeros;
 	}
 
 	@Override
 	public Integer[] mayoresQue(Integer obj) {
-		// TODO Auto-generated method stub
-		return null;
+		Integer[] tabla = new Integer[3];
+		Integer[] valores = { num1, num2, num3 };
+		int size = 0;
+
+		for (int i = 0; i < valores.length; i++) {
+			if (valores[i].compareTo(obj) > 0) {
+				tabla[size] = valores[i];
+				size++;
+			}
+
+		}
+		tabla = Arrays.copyOf(tabla, size);
+		return tabla;
 	}
 
 	@Override
 	public Integer[] menoresQue(Integer obj) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		Integer[] tabla = new Integer[3];
+		Integer[] valores = { num1, num2, num3 };
+		int size = 0;
 
-	
+		for (int i = 0; i < valores.length; i++) {
+			if (valores[i].compareTo(obj) < 0) {
+				tabla[size] = valores[i];
+				size++;
+			}
+
+		}
+		tabla = Arrays.copyOf(tabla, size);
+		return tabla;
+	}
 
 }
