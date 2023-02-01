@@ -2,7 +2,7 @@ package interfaces;
 
 import java.util.Objects;
 
-public class Cliente {
+public class Cliente implements Comparable<Cliente>{
 	private String dni;
 	private String nombre;
 	private int edad;
