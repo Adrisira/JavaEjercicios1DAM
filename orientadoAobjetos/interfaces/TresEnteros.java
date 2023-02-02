@@ -6,9 +6,9 @@ public class TresEnteros implements Estadistica<Integer> {
 
 	// Atributos
 
-	Integer num1;
-	Integer num2;
-	Integer num3;
+	private Integer num1;
+	private Integer num2;
+	private Integer num3;
 
 	// Contructores
 
@@ -50,13 +50,15 @@ public class TresEnteros implements Estadistica<Integer> {
 	}
 
 	// Metodos
+	
+	//Hay que hacerlo con compare
 
 	@Override
 	public Integer mayor() {
 		Integer res = 0;
-		if (num1 > num2 && num1 > num3) {
+		if (num1.compareTo(num2) > 0 && num1.compareTo(num3) > 0) {
 			res = num1;
-		} else if (num2 > num3) {
+		} else if (num2.compareTo(num3) > 0) {
 			res = num2;
 		} else {
 			res = num3;
@@ -67,9 +69,9 @@ public class TresEnteros implements Estadistica<Integer> {
 	@Override
 	public Integer menor() {
 		Integer res = 0;
-		if (num1 < num2 && num1 < num3) {
+		if (num1.compareTo(num2) < 0 && num1.compareTo(num3) < 0) {
 			res = num1;
-		} else if (num2 < num3) {
+		} else if (num2.compareTo(num3) < 0) {
 			res = num2;
 		} else {
 			res = num3;
@@ -80,7 +82,7 @@ public class TresEnteros implements Estadistica<Integer> {
 	@Override
 	public double media() {
 		Integer numeros = 3;
-		return (num1 + num2 + num3) / numeros;
+		return (double)(num1 + num2 + num3) / numeros;
 	}
 
 	@Override
@@ -93,7 +95,7 @@ public class TresEnteros implements Estadistica<Integer> {
 			if (valores[i].compareTo(obj) > 0) {
 				tabla[size] = valores[i];
 				size++;
-			}
+			} 
 
 		}
 		tabla = Arrays.copyOf(tabla, size);
