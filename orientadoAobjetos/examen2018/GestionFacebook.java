@@ -79,10 +79,16 @@ public class GestionFacebook {
 	}
 
 	public static boolean sonTodosAmigos(ListaMiembros lista) {
-		return true;
+		boolean sonAmigos = true;
+		for (int i = 0; i < lista.getTamano() && sonAmigos; i++) {
+			for (int j = i+1; j < lista.getTamano() && sonAmigos; j++) {
+				sonAmigos = lista.getTabla()[i].tieneComoAmigoA(lista.getTabla()[j]);
+			}
+		}
+		return sonAmigos;
 	}
 
 	public static float indiceDeSimilitud(Miembro a, Miembro b) {
-		return 0;
+		return (float)(100*a.amigosEnComun(b).getTamano())/(a.getAmigos().getTamano()+b.getAmigos().getTamano()-a.amigosEnComun(b).getTamano());
 	}
 }

@@ -33,15 +33,35 @@ public class Miembro {
 	}
 
 	public ListaMiembros personasQueQuizaConozca() {
-		return null;
+		ListaMiembros lm = new ListaMiembros();
+		Miembro[] amigosDeInvocante = this.amigos.getTabla();
+		for (int i = 0; i < amigosDeInvocante.length; i++) {
+			Miembro[] amigosDeAmigo = amigosDeInvocante[i].amigos.getTabla();
+			for (int j = 0; j < amigosDeAmigo.length; j++) {
+				if (!this.equals(amigosDeAmigo[j]) && !this.tieneComoAmigoA(amigosDeAmigo[j])) {
+					lm.anadeMiembroSinRepetir(amigosDeAmigo[j]);
+				}
+			}
+		}
+		return lm;
 	}
 
+	// e
 	public ListaMiembros amigosEnComun(Miembro b) {
-		return null;
+		ListaMiembros lm = new ListaMiembros();
+		Miembro[] amigosDeParametro = b.amigos.getTabla();
+		for (int i = 0; i < amigosDeParametro.length; i++) {
+			if (this.amigos.contieneMiembro(amigosDeParametro[i])) {
+				lm.anadeMiembroSinRepetir(amigosDeParametro[i]);
+			}
+		}
+		return lm;
 	}
 
+	// f
 	public boolean tieneLosMismosAmigosQue(Miembro b) {
-		return true;
+		return this.amigos.getTamano() == this.amigosEnComun(b).getTamano()
+				&& b.amigos.getTamano() == this.amigos.getTamano();
 	}
 
 	@Override
