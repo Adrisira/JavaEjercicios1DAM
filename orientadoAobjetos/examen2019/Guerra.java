@@ -1,6 +1,6 @@
 package examen2019;
 
-public class Guerra implements Comparable <Guerra>{
+public class Guerra implements Comparable<Guerra> {
 	private String denominación; // nombre de la guerra
 	private Bando bandoA; // uno de los dos bandos que lucharon en esta guerra
 	private Bando bandoB; // el otro bando que luchó en esta guerra.
@@ -20,6 +20,39 @@ public class Guerra implements Comparable <Guerra>{
 		this.tablaBatallas[nBatallas++] = batalla;
 	}
 
+	public Bando getBandoA() {
+		return bandoA;
+	}
+	
+
+	public Batalla[] getTablaBatallas() {
+		return tablaBatallas;
+	}
+
+	public void setTablaBatallas(Batalla[] tablaBatallas) {
+		this.tablaBatallas = tablaBatallas;
+	}
+
+	public int getnBatallas() {
+		return nBatallas;
+	}
+
+	public void setnBatallas(int nBatallas) {
+		this.nBatallas = nBatallas;
+	}
+
+	public void setBandoA(Bando bandoA) {
+		this.bandoA = bandoA;
+	}
+
+	public Bando getBandoB() {
+		return bandoB;
+	}
+
+	public void setBandoB(Bando bandoB) {
+		this.bandoB = bandoB;
+	}
+
 	@Override
 	public String toString() {
 		String cad = "Guerra: " + denominación + "\n\n" + "    Bando:   " + bandoA // + "\n"
@@ -30,10 +63,11 @@ public class Guerra implements Comparable <Guerra>{
 
 		return cad;
 	}
-	
+
 	public int getNPaisesTotal() {
 		return this.bandoA.getnPaises() + this.bandoB.getnPaises();
 	}
+
 	@Override
 	public int compareTo(Guerra guerra) {
 		return this.getNPaisesTotal() - guerra.getNPaisesTotal();

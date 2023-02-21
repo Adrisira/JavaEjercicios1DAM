@@ -107,7 +107,38 @@ public class Gestion {
 		// mostramos los datos almacenados
 
 		mostrarTablaGuerras();
+		System.out.println(aliados1.contienePaisBando(usa));
+		System.out.println(francia.hasidoAlidadoDe(italia));
+		System.out.println(mayorConflagracion());
 
+	}
+
+	// e
+	public static Guerra mayorConflagracion() {
+
+		Guerra max = tablaGuerras[0];
+
+		for (int i = 1; i < nGuerras; i++)
+			if (tablaGuerras[i].compareTo(max) > 0)
+				max = tablaGuerras[i];
+
+		return max;
+
+	}
+	public static Pais masBeligerante() {
+		Pais max = tablaGuerras[0].getBandoA().getTablaPaises()[0];
+		
+		for (int i = 1; i < nGuerras; i++) {
+			Bando[] bandos= {tablaGuerras[i].getBandoA(), tablaGuerras[i].getBandoB()};
+			for(int z=0; z<2;z++) {
+			for (int j = 0; j < bandos[z].getnPaises(); j++) {
+				if (bandos[z].getTablaPaises()[j].getNBatallas() > max.getNBatallas())
+					max = bandos[z].getTablaPaises()[j];
+			}
+			}
+
+		}
+		return max;
 	}
 
 	private static void mostrarTablaGuerras() {
